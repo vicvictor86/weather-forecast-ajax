@@ -1,5 +1,3 @@
-//Falta ajeitar a barra debaixo que ta preta 
-
 function locateCurrentPosition() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
@@ -137,4 +135,4 @@ const weatherIcons = {
   "Neve": "icon-13",
 }
 
-// searchWeather(true);
+searchWeather(true);
