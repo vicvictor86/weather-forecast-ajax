@@ -23,20 +23,14 @@ async function searchWeather(searchByLocation = false) {
 
   let url;
   if (searchByLocation) {
-    let latitude;
-    let longitude;
+    const position = await locateCurrentPosition();
 
-    await locateCurrentPosition().then(position => {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
 
-      const endpoint = `https://api.hgbrasil.com/weather?format=json-cors&key=5ef34385&lat=${latitude}&lon=${longitude}&user_ip=remote`;
-      url = endpoint;
-    });
-
+    url = `https://api.hgbrasil.com/weather?format=json-cors&key=5ef34385&lat=${latitude}&lon=${longitude}&user_ip=remote`;
   } else {
-    const endpoint = `https://api.hgbrasil.com/weather?format=json-cors&key=5ef34385&city_name=${cityName}`;
-    url = endpoint;
+    url = `https://api.hgbrasil.com/weather?format=json-cors&key=5ef34385&city_name=${cityName}`;
   }
 
   const xhr = new XMLHttpRequest();
